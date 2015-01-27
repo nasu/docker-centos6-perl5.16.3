@@ -7,7 +7,7 @@ RUN yum -y install gcc
 RUN yum clean all
  
  RUN curl -L http://install.perlbrew.pl | bash
- ENV PATH=/root/perl5/perlbrew/bin:${PATH}
+ ENV PATH /root/perl5/perlbrew/bin:${PATH}
  RUN perlbrew install --notest 5.16.3
  RUN perlbrew use 5.16.3
  RUN perlbrew install-cpanm
