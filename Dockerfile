@@ -27,11 +27,29 @@ RUN echo "source ${PERLBREW_ROOT}/etc/bashrc &&\
     perlbrew use ${PERLVERSION} &&\
     perl \$@\
     " > ${HOME}/bin/perl
-RUN chmod +x ${HOME}/bin/perl
-RUN perl --version
+RUN echo "source ${PERLBREW_ROOT}/etc/bashrc &&\
+    perlbrew use ${PERLVERSION} &&\
+    cpanm \$@\
+    " > ${HOME}/bin/cpanm
+RUN chmod +x ${HOME}/bin/cpanm
+RUN echo "source ${PERLBREW_ROOT}/etc/bashrc &&\
+    perlbrew use ${PERLVERSION} &&\
+    perlbrew \$@\
+    " > ${HOME}/bin/perlbrew
+RUN chmod +x ${HOME}/bin/cpanm
 
 # cpanm
 RUN perlbrew install-cpanm
 RUN cpanm -nq Carton
 RUN cpanm -nq Plack
+RUN echo "source ${PERLBREW_ROOT}/etc/bashrc &&\
+    perlbrew use ${PERLVERSION} &&\
+    carton \$@\
+    " > ${HOME}/bin/carton
+RUN chmod +x ${HOME}/bin/carton
+RUN echo "source ${PERLBREW_ROOT}/etc/bashrc &&\
+    perlbrew use ${PERLVERSION} &&\
+    plackup \$@\
+    " > ${HOME}/bin/plackup
+RUN chmod +x ${HOME}/bin/plackup
 CMD perl -v; plackup -v
