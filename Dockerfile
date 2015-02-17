@@ -27,6 +27,7 @@ RUN echo "source ${PERLBREW_ROOT}/etc/bashrc &&\
     perlbrew use ${PERLVERSION} &&\
     perl \$@\
     " > ${HOME}/bin/perl
+RUN chmod +x ${HOME}/bin/perl
 RUN echo "source ${PERLBREW_ROOT}/etc/bashrc &&\
     perlbrew use ${PERLVERSION} &&\
     cpanm \$@\
